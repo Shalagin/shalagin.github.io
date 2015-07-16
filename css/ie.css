@@ -1,0 +1,21 @@
+#splash .logo {
+  top: 40%;
+  width: 320px;
+  margin-left: -160px;
+  margin-top: -57px;
+}
+#splash .arrow {
+  bottom: 15%;
+  width: 72px;
+  margin-left: -36px;
+  margin-top: -36px;
+}
+#splash img {
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";
+}
+#splash .tint {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+#splash .cover {
+  -ms-behavior: url(../js/polyfill/backgroundsize.htc);
+}
