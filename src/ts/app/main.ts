@@ -4,6 +4,8 @@
 /// <reference path="utils/fallbacks.ts" />
 /// <reference path="module/splash.ts" />
 /// <reference path="module/sticky.ts" />
+/// <reference path="module/maps.ts" />
+/// <reference path="module/parallax.ts" />
 
 
 
@@ -23,6 +25,7 @@ import ViewportUtils = require('utils/viewport');
 import Fallbacks = require('utils/fallbacks');
 import Splash = require('module/splash');
 import Maps = require('module/maps');
+import Parallax = require('module/parallax');
 
 
 var the:Main; // context reference
@@ -38,6 +41,7 @@ class Main
 
 	private splashModule:Splash = null;
 	private mapsModule:Maps = null;
+	private parallaxModule:Parallax = null;
 
 
 	constructor(bool:boolean)
@@ -65,6 +69,7 @@ class Main
 	{
 		the.splashModule = new Splash();
 		the.mapsModule = new Maps();
+		the.parallaxModule = new Parallax();
 
 		this.onResizeHandler();
 		this.onScrollHandler();
@@ -80,7 +85,6 @@ class Main
 		the.viewport.isDesktop = the.viewport.screenWidth() > (16 * 60);
 		the.viewport.isDesktop !== d && the.dispatcher.onMobileSignal().dispatch(!d);
 
-		console.log(the.$fsh, h);
 		the.$fsw.css('width', w);
 		the.$fsh.css('height', h);
 

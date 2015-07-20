@@ -39,8 +39,14 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport'], f
         };
         Splash.prototype.onScrollHandler = function () {
             var h = the.viewport.screenHeight(), y = the.viewport.scrollY(), lt = 0.5, lo = 1.0, ao = 4.0, op = 0.6, to = 40; // default logo top
-            if (y > h)
+            var video = the.$video.get(0);
+            if (y > h) {
+                video.played && video.pause();
                 return;
+            }
+            else {
+                video.paused && video.play();
+            }
             the.$logo.css({
                 'opacity': op * (1 - (y * lo) / h),
                 'top': to / (1 - (y * lt) / h) + '%'

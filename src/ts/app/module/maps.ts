@@ -33,7 +33,7 @@ class Maps
 		this.canvas = document.getElementById('map-canvas');
 
 		this.options = {
-			zoom: 18,
+			zoom: 16,
 			center: { lat: 55.716186, lng: 37.619300 },
 			disableDefaultUI: true,
 			//panControl: false,

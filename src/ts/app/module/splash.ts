@@ -85,7 +85,14 @@ class Splash
 			op:number = 0.6,	// default opacity
 			to:number = 40;		// default logo top
 
-		if (y > h) return;
+		var video:HTMLVideoElement = <any>the.$video.get(0);
+
+		if (y > h) {
+			video.played && video.pause();
+			return;
+		} else {
+			video.paused && video.play();
+		}
 
 		the.$logo.css({
 			'opacity': op * (1 - (y * lo) / h),

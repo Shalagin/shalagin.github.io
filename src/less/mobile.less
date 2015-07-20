@@ -124,6 +124,13 @@
 		.selection-color(@selection-background, @selection-color);
 
 
+		/**
+		 * UL LI COMMON STYLE
+		 */
+
+		li { list-style-type: none }
+
+
 
 	//┐
 	//│  ┌──────────────────────────────────────────────────────────────────────────────────────┐
@@ -157,6 +164,7 @@
 	//┘  
 
 		.inner {
+			.transition(1s);
 			max-width: 100%;
 			padding: 0 24/@em;
 
@@ -166,15 +174,13 @@
 			}
 		}
 
-		.inner {
-			section {
-				margin-top: 56/@em;
-			}
-		}
 
-		.inner {
-			.transition(1s);
-		}
+
+	//┐
+	//│  ┌──────────────────────────────────────────────────────────────────────────────────────┐
+	//╠──┤  GRIDS                                                                               │
+	//│  └──────────────────────────────────────────────────────────────────────────────────────┘
+	//┘  
 
 		.grid {
 			.tile {
@@ -183,6 +189,18 @@
 				float: left;
 				padding: 0 0 24px 24px;
 			}
+		}
+
+
+
+	//┐
+	//│  ┌──────────────────────────────────────────────────────────────────────────────────────┐
+	//╠──┤  CONTENT SECTIONS                                                                    │
+	//│  └──────────────────────────────────────────────────────────────────────────────────────┘
+	//┘  
+
+		#content > section {
+			margin-top: 56/@em;
 		}
 
 
@@ -211,6 +229,35 @@
 			border: thin solid @green;
 			background-color: @green;
 			color: @white;
+		}
+
+
+
+	//┐
+	//│  ┌──────────────────────────────────────────────────────────────────────────────────────┐
+	//╠──┤  PARALLAX SECTIONS                                                                   │
+	//│  └──────────────────────────────────────────────────────────────────────────────────────┘
+	//┘  
+
+		.parallax {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			overflow: hidden;
+
+			img {
+				max-width: none;
+				max-height: none;
+				width: auto;
+				height: auto;
+				position: absolute;
+			}
+		}
+
+		#parallax-n1 {
+			width: 100%;
+			height: 480/@em;
+			background-color: @yellow;
 		}
 
 
@@ -318,11 +365,8 @@
 	//│  └──────────────────────────────────────────────────────────────────────────────────────┘
 	//┘  
 
-		#portfolio {
-			li {
-				width: 100%;
-				list-style-type: none;
-			}
+		#portfolio li {
+			width: 100%;
 			.thumb {
 				.transition(all 0.3s);
 				.box-shadow(0px 1px 3px 0px rgba(0,0,0,0.3));
@@ -331,6 +375,18 @@
 					.box-shadow(0px 8px 16px -6px rgba(0,0,0,0.3));
 				}
 			}
+		}
+
+
+
+	//┐
+	//│  ┌──────────────────────────────────────────────────────────────────────────────────────┐
+	//╠──┤  PARTNERS                                                                            │
+	//│  └──────────────────────────────────────────────────────────────────────────────────────┘
+	//┘  
+
+		#partners li {
+			width: 50%;
 		}
 
 
@@ -380,19 +436,13 @@
 			h2 { font-size: 24/@em }
 			h3 { font-size: 18/@em }
 
-			.inner {
-				padding: 0 32/@em;
-			}
+			.inner { padding: 0 32/@em }
 
 
-			// ABOUT COVER
+			// PORTFOLIO
 			// ---------------------------------------------------------------------------------
 
-			#portfolio {
-				li {
-					width: 50%;
-				}
-			}
+			#portfolio li { width: 50% }
 		}
 
 
@@ -409,18 +459,20 @@
 			h3 { font-size: 20/@em }
 			p { font-size: 16/@em }
 
-			.inner {
-				padding: 0 48/@em;
+			.inner { padding: 0 48/@em }
 
-				section {
-					margin-top: 72/@em;
-				}
-			}
+			#content > section { margin-top: 72/@em }
 
 			.outline-btn {
 				padding: 12/@em 30/@em;
 				font-size: 14/@em;
 			}
+
+
+			// PARTNERS
+			// ---------------------------------------------------------------------------------
+
+			#partners li { width: 33.3333% }
 		}
 
 
@@ -436,9 +488,7 @@
 			h2 { font-size: 32/@em }
 			h3 { font-size: 24/@em }
 
-			.inner {
-				padding: 0 64/@em;
-			}
+			.inner { padding: 0 64/@em }
 		}
 
 

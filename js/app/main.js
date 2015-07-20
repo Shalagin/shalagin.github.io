@@ -4,7 +4,9 @@
 /// <reference path="utils/fallbacks.ts" />
 /// <reference path="module/splash.ts" />
 /// <reference path="module/sticky.ts" />
-define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'utils/fallbacks', 'module/splash', 'module/maps'], function (require, exports, $, Dispatcher, ViewportUtils, Fallbacks, Splash, Maps) {
+/// <reference path="module/maps.ts" />
+/// <reference path="module/parallax.ts" />
+define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'utils/fallbacks', 'module/splash', 'module/maps', 'module/parallax'], function (require, exports, $, Dispatcher, ViewportUtils, Fallbacks, Splash, Maps, Parallax) {
     var the; // context reference
     var Main = (function () {
         function Main(bool) {
@@ -16,6 +18,7 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'u
             this.viewport = null;
             this.splashModule = null;
             this.mapsModule = null;
+            this.parallaxModule = null;
             console.log("new Main");
             Modernizr.videoautoplay = bool;
             Modernizr.svg || Fallbacks.svgTo("png");
@@ -33,6 +36,7 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'u
         Main.prototype.initialize = function () {
             the.splashModule = new Splash();
             the.mapsModule = new Maps();
+            the.parallaxModule = new Parallax();
             this.onResizeHandler();
             this.onScrollHandler();
         };
@@ -40,7 +44,6 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'u
             var w = the.viewport.screenWidth(), h = the.viewport.screenHeight(), d = the.viewport.isDesktop;
             the.viewport.isDesktop = the.viewport.screenWidth() > (16 * 60);
             the.viewport.isDesktop !== d && the.dispatcher.onMobileSignal().dispatch(!d);
-            console.log(the.$fsh, h);
             the.$fsw.css('width', w);
             the.$fsh.css('height', h);
             the.dispatcher.onResizeSignal().dispatch();

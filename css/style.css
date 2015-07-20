@@ -309,6 +309,12 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: #444666;
 }
+/**
+		 * UL LI COMMON STYLE
+		 */
+li {
+  list-style-type: none;
+}
 body {
   height: 100%;
   overflow-x: hidden;
@@ -317,6 +323,11 @@ body.modal {
   overflow: hidden;
 }
 .inner {
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
   max-width: 100%;
   padding: 0 1.5em;
 }
@@ -331,16 +342,6 @@ body.modal {
 .inner .grid:after {
   clear: both;
 }
-.inner section {
-  margin-top: 3.5em;
-}
-.inner {
-  -webkit-transition: 1s;
-  -moz-transition: 1s;
-  -ms-transition: 1s;
-  -o-transition: 1s;
-  transition: 1s;
-}
 .grid .tile {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -350,6 +351,9 @@ body.modal {
   position: relative;
   float: left;
   padding: 0 0 24px 24px;
+}
+#content > section {
+  margin-top: 3.5em;
 }
 .outline-btn {
   -webkit-transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -381,6 +385,24 @@ body.modal {
   border: thin solid #12c33b;
   background-color: #12c33b;
   color: #ffffff;
+}
+.parallax {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.parallax img {
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+  position: absolute;
+}
+#parallax-n1 {
+  width: 100%;
+  height: 30em;
+  background-color: #ffc600;
 }
 #splash {
   max-width: 100%;
@@ -461,9 +483,8 @@ body.modal {
 }
 #portfolio li {
   width: 100%;
-  list-style-type: none;
 }
-#portfolio .thumb {
+#portfolio li .thumb {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
@@ -473,7 +494,7 @@ body.modal {
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
 }
-#portfolio .thumb:hover {
+#portfolio li .thumb:hover {
   -webkit-transform: translate(0, -4px);
   -moz-transform: translate(0, -4px);
   -ms-transform: translate(0, -4px);
@@ -482,6 +503,9 @@ body.modal {
   -webkit-box-shadow: 0px 8px 16px -6px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 8px 16px -6px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 8px 16px -6px rgba(0, 0, 0, 0.3);
+}
+#partners li {
+  width: 50%;
 }
 #map-canvas {
   width: 100%;
@@ -519,12 +543,15 @@ body.modal {
   .inner {
     padding: 0 3em;
   }
-  .inner section {
+  #content > section {
     margin-top: 4.5em;
   }
   .outline-btn {
     padding: 0.75em 1.875em;
     font-size: 0.875em;
+  }
+  #partners li {
+    width: 33.3333%;
   }
 }
 @media screen and (min-width: 48em) {
@@ -563,7 +590,7 @@ body.modal {
     padding: 0;
     margin: auto;
   }
-  .inner section {
+  #content > section {
     margin-top: 6em;
   }
   .outline-btn {
@@ -597,6 +624,9 @@ body.modal {
   #portfolio li {
     width: 33.3333%;
   }
+  #partners li {
+    width: 25%;
+  }
 }
 @media screen and (min-width: 80em) {
   h1 {
@@ -615,7 +645,7 @@ body.modal {
   .inner {
     max-width: 70.5em;
   }
-  .inner section {
+  #content > section {
     margin-top: 8em;
   }
   .outline-btn {
@@ -643,5 +673,8 @@ body.modal {
   .outline-btn {
     padding: 1.125em 2.5em;
     font-size: 1.25em;
+  }
+  #partners li {
+    width: 16.6666%;
   }
 }
