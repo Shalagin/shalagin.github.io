@@ -26,6 +26,7 @@ class Parallax
 	//private $n1:JQuery = null;
 
 	private n1:ParallaxNode = null;
+	private n2:ParallaxNode = null;
 
 	private dispatcher:Dispatcher = null;
 
@@ -34,6 +35,7 @@ class Parallax
 	{
 		console.log("new Parallax");
 		this.n1 = new ParallaxNode('#parallax-n1');
+		this.n2 = new ParallaxNode('#parallax-n2');
 		//this.viewport = ViewportUtils.instance();
 		this.dispatcher = Dispatcher.instance();
 		this.dispatcher.onScrollSignal().add(this.onScrollHandler);
@@ -44,77 +46,11 @@ class Parallax
 	private onScrollHandler():void
 	{
 		the.n1.update();
+		the.n2.update();
 	}
 
 
-	/*constructor()
-	{
-		console.log("new Parallax");
-		this.$n1 = $('#parallax-n1');
-
-		this.dispatcher = Dispatcher.instance();
-		this.viewport = ViewportUtils.instance();
-
-		this.dispatcher.onScrollSignal().add(this.onScrollHandler);
-
-		the = this;
-	}
-
-
-	private onScrollHandler():void
-	{
-		var scroll:number = the.viewport.scrollY();
-		var top:number = the.$n1.offset().top - the.viewport.screenHeight();
-		var bottom:number = the.$n1.offset().top + the.$n1.height();
-
-		// вычисляет процент прокрутки
-		if (scroll >= top && scroll <= bottom) {
-			var percent:number = (scroll - top) / (bottom - top);
-			console.log(the.deround(percent, 1000));
-		}
-
-		the.setPosition();
-	}
-
-
-	private setPosition():void
-	{
-		var w:number = the.$n1.width();
-		var h:number = the.$n1.height();
-
-		var container:JQuery = the.$n1.children(".parallax");
-		var img:JQuery = container.children("img");
-
-
-		//---- scale factor
-
-		var fw:number = w / 960;
-		var fh:number = h / 320;
-		var scale:number = Math.max(fw, fh);
-
-		var imgWidth:number = 960 * scale;
-		var imgHeight:number = 320 * scale;
-
-		img.width(imgWidth);
-		img.height(imgHeight);
-
-		//----
-
-		img.css({
-			"left": (w - img.width()) * 0.5,
-			"top": (h - img.height()) * 0.5
-		});
-
-		//the.getImgSize(img);
-	}
-
-
-	private deround(p:number, n:number):number
-	{
-		return Math.ceil((p) * n) / n;
-	}
-
-	private getImgSize(img:JQuery):void
+	/*private getImgSize(img:JQuery):void
 	{
 		$("<img>").attr("src", img.attr("src")).load(function(){
 			var realWidth = this.width;
@@ -158,6 +94,13 @@ class ParallaxNode
 		this.viewport = ViewportUtils.instance();
 	}
 
+
+	public resie():void
+	{
+
+	}
+
+
 	public update():void
 	{
 		var scrollY:number = this.viewport.scrollY();
@@ -175,12 +118,12 @@ class ParallaxNode
 
 		if (scrollY >= top && scrollY <= bottom) {
 			percent = this.deround((scrollY - top) / (bottom - top), 1000);
-			console.log(percent);
+			//console.log(percent);
 		}
 
 
 		// фактор высоты
-		var factor:number = 0.20;
+		var factor:number = 2;
 		var factorHeight:number = containerHeight + containerHeight * factor;
 
 
@@ -207,6 +150,7 @@ class ParallaxNode
 		});
 
 		//console.log(containerHeight, factorHeight);
+		console.log(this.$container.attr('data-factor'));
 	}
 
 

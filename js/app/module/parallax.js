@@ -7,9 +7,11 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport'], f
         function Parallax() {
             //private $n1:JQuery = null;
             this.n1 = null;
+            this.n2 = null;
             this.dispatcher = null;
             console.log("new Parallax");
             this.n1 = new ParallaxNode('#parallax-n1');
+            this.n2 = new ParallaxNode('#parallax-n2');
             //this.viewport = ViewportUtils.instance();
             this.dispatcher = Dispatcher.instance();
             this.dispatcher.onScrollSignal().add(this.onScrollHandler);
@@ -17,6 +19,7 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport'], f
         }
         Parallax.prototype.onScrollHandler = function () {
             the.n1.update();
+            the.n2.update();
         };
         return Parallax;
     })();
@@ -40,6 +43,8 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport'], f
             this.imgHeight = this.$img.height();
             this.viewport = ViewportUtils.instance();
         }
+        ParallaxNode.prototype.resie = function () {
+        };
         ParallaxNode.prototype.update = function () {
             var scrollY = this.viewport.scrollY();
             var screenHeight = this.viewport.screenHeight();
@@ -52,10 +57,9 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport'], f
             var bottom = containerOffsetTop + containerHeight;
             if (scrollY >= top && scrollY <= bottom) {
                 percent = this.deround((scrollY - top) / (bottom - top), 1000);
-                console.log(percent);
             }
             // фактор высоты
-            var factor = 0.20;
+            var factor = 2;
             var factorHeight = containerHeight + containerHeight * factor;
             // вычисляет scale factor
             var scale = Math.max(containerWidth / this.imgWidth, factorHeight / this.imgHeight);
@@ -73,6 +77,7 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport'], f
                 "top": curtop
             });
             //console.log(containerHeight, factorHeight);
+            console.log(this.$container.attr('data-factor'));
         };
         ParallaxNode.prototype.deround = function (p, n) {
             return Math.ceil((p) * n) / n;
