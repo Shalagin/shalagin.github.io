@@ -8,18 +8,19 @@
 //│  ║                                                                                          ║
 //│  ╚══════════════════════════════════════════════════════════════════════════════════════════╝
 //┘
-var pathToJQuery = ('querySelector' in document && 'localStorage' in window && 'addEventListener' in window) ? '../lib/jquery' : '../lib/jquery.old';
+var condition = ('querySelector' in document && 'localStorage' in window && 'addEventListener' in window);
+var pathToJQuery = condition ? '../lib/jquery/jquery' : '../lib/jquery/jquery.old';
+var pathtuJQueryUI = '../lib/jquery/jquery-ui';
 var pathToSignals = '../lib/signals';
 require.config({
     baseUrl: './js/app',
     paths: {
         jquery: pathToJQuery,
+        jqueryui: pathtuJQueryUI,
         signals: pathToSignals
     },
     shim: {
-        jquery: {
-            exports: '$'
-        }
+        jqueryui: ['jquery']
     }
 });
 //┐
@@ -29,7 +30,7 @@ require.config({
 //│  ║                                                                                          ║
 //│  ╚══════════════════════════════════════════════════════════════════════════════════════════╝
 //┘
-require(['main', 'jquery'], function (Main, $) {
+require(['main', 'jquery', 'jqueryui'], function (Main, $) {
     'use strict';
     $(function () {
         // startup after async test

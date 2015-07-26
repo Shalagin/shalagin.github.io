@@ -6,7 +6,7 @@
 /// <reference path="module/sticky.ts" />
 /// <reference path="module/maps.ts" />
 /// <reference path="module/parallax.ts" />
-define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'utils/fallbacks', 'module/splash', 'module/maps', 'module/parallax'], function (require, exports, $, Dispatcher, ViewportUtils, Fallbacks, Splash, Maps, Parallax) {
+define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'utils/fallbacks', 'module/splash', 'module/maps', 'module/parallax', 'module/portfolio'], function (require, exports, $, Dispatcher, ViewportUtils, Fallbacks, Splash, Maps, Parallax, Portfolio) {
     var the; // context reference
     var Main = (function () {
         function Main(bool) {
@@ -19,6 +19,7 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'u
             this.splashModule = null;
             this.mapsModule = null;
             this.parallaxModule = null;
+            this.portfolioModule = null;
             console.log("new Main");
             Modernizr.videoautoplay = bool;
             Modernizr.svg || Fallbacks.svgTo("png");
@@ -37,6 +38,7 @@ define(["require", "exports", 'jquery', 'utils/dispatcher', 'utils/viewport', 'u
             the.splashModule = new Splash();
             the.mapsModule = new Maps();
             the.parallaxModule = new Parallax();
+            the.portfolioModule = new Portfolio();
             this.onResizeHandler();
             this.onScrollHandler();
         };
