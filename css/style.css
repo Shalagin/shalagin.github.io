@@ -481,6 +481,15 @@ body.modal {
     bottom: -1em;
   }
 }
+#services .tile {
+  width: 100%;
+  padding-top: 2.5em;
+  padding-right: 2.5em;
+}
+#services .tile .inter {
+  color: #999999;
+  padding-top: 0.75em;
+}
 #portfolio li {
   width: 100%;
 }
@@ -613,6 +622,9 @@ body.modal {
   }
   .inner {
     padding: 0 4em;
+  }
+  #services .tile {
+    width: 50%;
   }
 }
 #about .cover {
